@@ -14,15 +14,18 @@ include_once "configs/database.php";
 include_once "objetos/cardapio.php";
 include_once "funcoes.php";
 
-resultadobd();
-pesquisa();
+pesquisar();
+TodosProdutos();
 // $banco= new database();
 // $bd= $banco->conectar();
 // $a = new Cardapio($bd);
 // global $produtos;
-foreach ($produtos_pesquisar as $rows){
-    echo $rows->nome;
-    echo $rows->descricao;
+if ($produtos_pesquisar){
+    foreach ($produtos_pesquisar as $rows){
+        echo $rows->nome;
+        echo $rows->descricao;
+    }
+
 }
 
 if($produtos){

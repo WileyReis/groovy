@@ -6,15 +6,17 @@ $banco= new database();
 $bd= $banco->conectar();
 $a= new Cardapio($bd);
 
-function resultadobd(){
+function pesquisar(){
     global $produtos_pesquisar;
     $banco = new database();
     $bd= $banco->conectar();
     $a = new Cardapio($bd);
-    $produtos_pesquisar = $a-> verProduto($_POST['pesquisa']);
+    if (isset($_POST['pesquisa'])){
+        $produtos_pesquisar = $a-> verProduto($_POST['pesquisa']);
+    }
 }
 
-function pesquisa(){
+function TodosProdutos(){
     global $produtos;
     $banco = new database();
     $bd= $banco->conectar();
