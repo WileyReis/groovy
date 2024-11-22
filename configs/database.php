@@ -2,7 +2,7 @@
 
 class database{
     private $host = "localhost";
-    private $banco = "groovy";
+    private $banco = "groovys_bd";
     private $usuario = "root";
     private $senha = "";
     public $con;

@@ -23,10 +23,10 @@ class Cardapio{
     return  $resultado->fetchAll(PDO::FETCH_OBJ);        
   }
 
-  public function verProduto($id){
-    $sql = "SELECT * FROM cardapio WHERE id = :id;";
+  public function verProduto($nome){
+    $sql = "SELECT * FROM cardapio WHERE nome = :nome;";
     $resultado = $this->bd->prepare($sql);
-    $resultado->bindParam(":id", $id);
+    $resultado->bindParam(":nome", $nome);
     $resultado->execute();
 
     return $resultado->fetchAll(PDO::FETCH_OBJ);
