@@ -11,14 +11,19 @@
 
 <?php
 include_once "configs/database.php";
-include_once "cardapio.php";
+include_once "objetos/cardapio.php";
 include_once "funcoes.php";
 
 resultadobd();
-$banco= new database();
-$bd= $banco->conectar();
-$aluno = new Cardapio($bd);
-global $produtos;
+pesquisa();
+// $banco= new database();
+// $bd= $banco->conectar();
+// $a = new Cardapio($bd);
+// global $produtos;
+foreach ($produtos_pesquisar as $rows){
+    echo $rows->nome;
+    echo $rows->descricao;
+}
 
 if($produtos){
     echo "<table>";
@@ -42,10 +47,4 @@ if($produtos){
 
 }else{
     echo "Falha ao conectar";
-}
-
-if(isset($_POST["pesquisa"])){
-    foreach($produto->verProduto($_POST["pesquisa"]) as $item){
-        echo "<p>".$item->nome."</p>";
-    }
 }

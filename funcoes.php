@@ -1,20 +1,26 @@
 <?php
 include_once "configs/database.php";
-include_once "cardapio.php";
+include_once "objetos/cardapio.php";
 
 $banco= new database();
 $bd= $banco->conectar();
 $a= new Cardapio($bd);
-$produtos=null;
 
 function resultadobd(){
+    global $produtos_pesquisar;
+    $banco = new database();
+    $bd= $banco->conectar();
+    $a = new Cardapio($bd);
+    $produtos_pesquisar = $a-> verProduto($_POST['pesquisa']);
+}
+
+function pesquisa(){
     global $produtos;
     $banco = new database();
     $bd= $banco->conectar();
     $a = new Cardapio($bd);
-    $produtos = $a-> verProduto();
+    $produtos = $a-> lerTodos();
 }
-
 
 
 if(isset($_POST['cadastrar'])){
